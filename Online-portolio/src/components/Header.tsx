@@ -7,7 +7,7 @@ export default function Header() {
         },
         {
             name: "Mail",
-            link: "bjorn.jongenelen11@gmail.com",
+            link: "mailto:bjorn.jongenelen11@gmail.com",
         },
         {
             name: "LinkedIn",
