@@ -54,9 +54,9 @@ export default function Header() {
                     }
                 </div>
             </div>
-            <div className="rounded-full p-1 bg-gradient-to-r from-red-600 to-orange-400 w-95 h-105 flex items-center justify-center">
+            <div className="rounded-full p-1 bg-gradient-to-r from-red-600 to-orange-400 w-95 h-100 flex items-center justify-center">
                 <img
-                    className="rounded-full w-93 h-103 border-4 border-white"
+                    className="rounded-full w-93 h-98 border-4 border-white"
                     src="./src/assets/images/profile.png"
                     alt="Profile"
                 />
