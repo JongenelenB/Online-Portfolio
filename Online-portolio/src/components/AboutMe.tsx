@@ -5,7 +5,7 @@ export default function AboutMe() {
     const silhouette = "./src/assets/images/silhoutte.png";
 
     return (
-        <section className="w-full min-h-screen bg-[#f9fafb] flex items-center justify-center px-10 my-20 relative p-10">
+        <section className="w-full min-h-screen bg-[#f9fafb] relative flex items-center justify-center">
 
             {/* Achtergrondafbeelding */}
             <div
@@ -19,8 +19,8 @@ export default function AboutMe() {
                 }}
             ></div>
 
-            {/* Inhoud van de sectie */}
-            <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-16 items-center text-left relative z-10">
+            {/* Inhoud */}
+            <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-16 items-center text-left relative z-10 px-10">
 
                 {/* Left */}
                 <motion.div
@@ -44,20 +44,15 @@ export default function AboutMe() {
                         <p>
                             I believe that good software starts with clarity. That’s why I focus on
                             writing structured, maintainable code and creating straightforward UI/UX
-                            experiences that feel intuitive and accessible for everyone. My goal is
-                            always to make applications easy to use, without unnecessary complexity.
+                            experiences that feel intuitive and accessible for everyone.
                         </p>
                         <p>
                             Before transitioning fully into development, I worked in the cybersecurity
-                            field after completing my degree in Electronics & ICT at AP. This background
-                            helped me develop a strong technical foundation, attention to detail, and an
-                            understanding of how important reliability and security are in modern
-                            applications.
+                            field after completing my degree in Electronics & ICT at AP.
                         </p>
                         <p>
                             Outside of coding, you’ll usually find me on the badminton court or
-                            unwinding with a game. Staying active helps me keep a clear mind and brings
-                            fresh energy and focus back into my work.
+                            unwinding with a game.
                         </p>
                     </div>
                 </motion.div>
@@ -77,8 +72,10 @@ export default function AboutMe() {
                         <li>✔ Growth toward full-stack</li>
                     </ul>
                 </motion.div>
+
             </div>
         </section>
+
 
     );
 }
