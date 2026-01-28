@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 
 // Aantal dots
-const DOT_COUNT = 50;
+const DOT_COUNT = 40;
 
 // Willekeurige startposities
 const randomPos = () => ({

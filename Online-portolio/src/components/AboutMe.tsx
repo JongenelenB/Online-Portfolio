@@ -12,7 +12,7 @@ export default function AboutMe() {
                 className="absolute inset-0 pointer-events-none"
                 style={{
                     backgroundImage: `url(${silhouette})`,
-                    backgroundSize: '40%',
+                    backgroundSize: '30%',
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'bottom',
                     opacity: 0.2,
