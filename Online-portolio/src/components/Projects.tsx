@@ -31,9 +31,10 @@ export default function Projects() {
 
     return (
         <div>
-            <h2 className="text-4xl font-bold mb-4 m-5 p-5">
-                <span className="text-orange-500">Projects</span>
+            <h2 className="text-4xl font-bold mb-4 text-center m-5 p-5">
+                Projects <span className="text-orange-500">Portfolio</span>
             </h2>
+
             <div className="flex flex-wrap gap-6 m-5">
                 {
                     cases.map((c) => (

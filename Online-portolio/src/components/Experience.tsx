@@ -49,7 +49,7 @@ export default function Experience() {
     ]
 
     return (
-        <div className="w-full flex justify-center overflow-x-hidden">
+        <div className="w-full flex justify-center overflow-x-hidden pb-5">
             {/* 
         Scrollable timeline container
         max-w-6xl -> wider container
@@ -176,7 +176,7 @@ const EventCard = ({
 }) => (
     <div
         className={`
-      max-w-sm p-5 rounded-xl transition-all duration-700
+      max-w-sm p-5 rounded-xl transition-all duration-700 
       ${active
                 ? "opacity-100 translate-x-0 scale-105 shadow-xl bg-white" // Active: fade in + scale up
                 : side === "left"
