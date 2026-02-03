@@ -7,7 +7,7 @@ export default function Projects() {
         status: "Completed",
         projectInfo: "Dashboard voor het beheren van gebruikers, rollen en rechten met focus op security en schaalbaarheid.",
         technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js"],
-        imageUrl: "/images/iam-dashboard.png"
+        imageUrl: "./src/assets/images/Bugger.png"
     },
 
     {
@@ -15,7 +15,7 @@ export default function Projects() {
         status: "In Progress",
         projectInfo: "A simple, professional website that informs potential customers about services, provides contact options, and builds trust through a portfolio of projects.",
         technologies: ["React", "Motion", "Tailwind CSS", "Firebase"],
-        imageUrl: "/images/iam-dashboard.png"
+        imageUrl: "./src/assets/images/Power solutions.png"
     },
 
     {
@@ -23,7 +23,7 @@ export default function Projects() {
         status: "Planned",
         projectInfo: "A modern, user-friendly e-commerce website that lets customers browse and purchase products. The site also shows which shopping behaviour, helping customers discover trending items and assisting the store in managing inventory.",
         technologies: ["Angular", "typescript", "Bootstrap", "Firebase", "PostgreSQL"],
-        imageUrl: "/images/iam-dashboard.png"
+        imageUrl: "./src/assets/images/Court One.png"
     }
 
 
