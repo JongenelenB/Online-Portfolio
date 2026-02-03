@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState } from "react"
 
-// --------------------
-// TypeScript type for each event
-// --------------------
+
 type TimelineEvent = {
-    title: string       // The title of the project / job / study
-    date: string        // Date or year
-    direction: "left" | "right" // Determines which side the card appears
-    content?: string    // Optional description
+    title: string
+    date: string
+    direction: "left" | "right"
+    content?: string
 }
 
 // --------------------
