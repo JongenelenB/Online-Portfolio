@@ -6,7 +6,7 @@ export default function Projects() {
       title: "Bugger",
       status: "Completed",
       projectInfo:
-        "Dashboard voor het beheren van gebruikers, rollen en rechten met focus op security en schaalbaarheid.",
+        "Dashboard for managing users, roles, and permissions with a focus on security and scalability.",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js"],
       imageUrl: "images/Bugger.png",
     },
