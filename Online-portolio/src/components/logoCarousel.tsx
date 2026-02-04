@@ -41,7 +41,11 @@ export default function LogoCarousel({ folder, title, direction = "Left" }: Logo
 
   return (
     <div className="relative max-w-[80%] mx-auto my-8 p-6 overflow-hidden">
-      <h2 className="mb-6 text-3xl font-bold">{title}</h2>
+   <h2 className="mb-8 text-2xl md:text-3xl font-bold tracking-tight text-gray-800">
+   <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-400 pl-10">
+    {title}
+  </span>
+</h2>
 
       <div className="absolute top-0 left-0 h-full w-24 pointer-events-none bg-gradient-to-r from-white/80 to-transparent z-10" />
       <div className="absolute top-0 right-0 h-full w-24 pointer-events-none bg-gradient-to-l from-white/80 to-transparent z-10" />
