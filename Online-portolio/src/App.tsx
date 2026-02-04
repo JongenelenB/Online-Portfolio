@@ -6,6 +6,7 @@ import AboutMe from './components/AboutMe'
 import Projects from './components/Projects'
 import LogoCarousel from './components/logoCarousel'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -22,6 +23,7 @@ const sections = [
     ) 
   },
   { id: 'Projects', component: <Projects /> },
+  { id: 'Contact', component: <Footer /> },
 ];
 
 return (
