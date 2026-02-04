@@ -1,182 +1,155 @@
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Github, Linkedin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Github, Linkedin, CheckCircle2, Download } from 'lucide-react';
 
-export default function Footer() {
+export default function Contact() {
   const currentYear = new Date().getFullYear();
+  const [status, setStatus] = useState(""); // "" | "sending" | "success" | "error"
+
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setStatus("sending");
+    
+    const formData = new FormData(event.currentTarget as HTMLFormElement);
+    formData.append("access_key", "d005d495-c887-47ec-af00-93b8fbef82cf");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus("success");
+        event.currentTarget.reset(); 
+        setTimeout(() => setStatus(""), 5000);
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+    console.error("Submission failed:", error);
+      setStatus("error");
+    }
+  };
 
   return (
-    <section id="Contact" className="py-20 bg-black text-white overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="Contact" className="w-full h-auto flex flex-col items-center justify-center pt-32 pb-0 bg-gray-50">
+      
+      <div className="w-full max-w-6xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
         
-        {/* Titel Sectie */}
+        {/* LEFT COLUMN: Text & Info */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center lg:text-left"
         >
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-600 to-orange-400 bg-clip-text text-transparent mb-4">
-            Get In Touch
+          <h2 className="mb-6 text-4xl md:text-5xl font-bold tracking-tight">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-400">
+              Get In Touch
+            </span>
           </h2>
-          <p className="text-gray-400">
-            Have a project in mind? Let's work together to create something amazing.
+
+          <p className="text-xl text-gray-600 max-w-xl mx-auto lg:mx-0 mt-4 leading-relaxed">
+            Have a project in mind or just want to say hi? Feel free to send me a message. 
+            I'm always open to discussing new projects, creative ideas or opportunities.
           </p>
+
+          <div className="mt-12 space-y-6">
+            {[
+              { icon: <Mail className="text-orange-500" />, title: "Email", value: "Jongenelen.Bjorn@gmail.com", link: "mailto:Jongenelen.Bjorn@gmail.com" },
+              { icon: <Phone className="text-orange-500" />, title: "Phone", value: "+32 485 50 12 97", link: "tel:+32485501297" },
+              { icon: <MapPin className="text-orange-500" />, title: "Location", value: "Antwerp, Belgium", link: "#" }
+            ].map((item, index) => (
+              <div key={index} className="flex items-center gap-4 justify-center lg:justify-start">
+                <div className="p-3 bg-white rounded-lg shadow-sm text-orange-500 border border-gray-100">
+                  {item.icon}
+                </div>
+                <div className="text-left">
+                  <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">{item.title}</p>
+                  <a href={item.link} className="text-lg font-medium text-gray-800 hover:text-orange-500 transition-colors">
+                    {item.value}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 flex justify-center lg:justify-start gap-6">
+            <a href="https://github.com/bjornjongenelen" target="_blank" rel="noopener noreferrer" className="p-3 bg-white rounded-full shadow-md hover:scale-110 hover:shadow-lg transition-all text-gray-700 hover:text-orange-500">
+              <Github size={24} />
+            </a>
+            <a href="https://linkedin.com/in/bjornjongenelen" target="_blank" rel="noopener noreferrer" className="p-3 bg-white rounded-full shadow-md hover:scale-110 hover:shadow-lg transition-all text-gray-700 hover:text-orange-500">
+              <Linkedin size={24} />
+            </a>
+          </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        {/* RIGHT COLUMN: Form */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="w-full rounded-xl shadow-lg overflow-hidden border-l-4 border-orange-500 bg-white p-8 md:p-10"
+        >
+          <h3 className="text-2xl font-bold text-gray-800 mb-6">Send a Message</h3>
           
-          {/* Linkerkant: Contact Informatie */}
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
+          <form onSubmit={onSubmit} className="space-y-6">
             <div>
-              <h3 className="text-2xl font-bold mb-4">Contact Information</h3>
-              <p className="text-gray-400 mb-8">
-                Feel free to reach out through any of the following channels. 
-                I typically respond within 24 hours.
-              </p>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
+              <input type="text" name="name" required className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all" placeholder="John Doe" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+              <input type="email" name="email" required className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all" placeholder="john@example.com" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+              <textarea name="message" rows={4} required className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all resize-none" placeholder="Tell me about your project..." />
             </div>
 
-            <div className="space-y-4">
-              {[
-                { icon: <Mail size={20} />, title: 'Email', value: 'hello@bjorn.com', link: 'mailto:hello@bjorn.com' },
-                { icon: <Phone size={20} />, title: 'Phone', value: '+31 (0) 6 12345678', link: 'tel:+31612345678' },
-                { icon: <MapPin size={20} />, title: 'Location', value: 'Antwerpen, België', link: '#' },
-              ].map((item, i) => (
-                <a 
-                  href={item.link}
-                  key={i} 
-                  className="flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-red-500/50 transition-all group"
-                >
-                  <div className="p-3 bg-red-500/10 rounded-xl group-hover:bg-red-500/20 transition-colors">
-                    <span className="text-red-500">{item.icon}</span>
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-500 uppercase tracking-wider">{item.title}</p>
-                    <p className="font-semibold text-gray-200">{item.value}</p>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </motion.div>
+            <button 
+              type="submit"
+              disabled={status === "sending"}
+              className={`w-full relative inline-flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-red-600 to-orange-400 overflow-hidden group font-medium text-white transition-all shadow-md ${status === "sending" ? "opacity-70" : "hover:shadow-orange-200"}`}
+            >
+              <span className="relative w-full px-6 py-3 transition-all ease-in duration-75 bg-opacity-0 rounded-md group-hover:bg-opacity-0">
+                <span className="flex items-center justify-center gap-2">
+                   {status === "sending" ? "Sending..." : <><Send size={18} /> Send Message</>}
+                </span>
+              </span>
+            </button>
 
-          {/* Rechterkant: Web3Forms Contact Formulier */}
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="relative p-[1px] rounded-3xl bg-gradient-to-r from-red-600/30 to-orange-400/30 shadow-2xl"
-          >
-            <div className="bg-[#0f0f0f] p-8 rounded-[23px] border border-white/5">
-              <h3 className="text-xl font-bold mb-6">Send a Message</h3>
-              
-              <form action="https://api.web3forms.com/submit" method="POST" className="space-y-5">
-                {/* Web3Forms Access Key - VERVANG DEZE WAARDE */}
-                <input type="hidden" name="access_key" value="JOUW_ACCESS_KEY_HIER" />
-                
-                {/* Anti-spam (honeypot) */}
-                <input type="checkbox" name="botcheck" className="hidden" />
-
-                <div>
-                  <label className="text-sm text-gray-400 block mb-2 font-medium">Your Name</label>
-                  <input 
-                    type="text" 
-                    name="name"
-                    required
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/50 transition-all text-gray-200" 
-                    placeholder="Bjorn Jongenelen" 
-                  />
-                </div>
-
-                <div>
-                  <label className="text-sm text-gray-400 block mb-2 font-medium">Your Email</label>
-                  <input 
-                    type="email" 
-                    name="email"
-                    required
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/50 transition-all text-gray-200" 
-                    placeholder="bjorn@example.com" 
-                  />
-                </div>
-
-                <div>
-                  <label className="text-sm text-gray-400 block mb-2 font-medium">Your Message</label>
-                  <textarea 
-                    name="message"
-                    required
-                    rows={4} 
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/50 transition-all text-gray-200 resize-none" 
-                    placeholder="How can I help you?" 
-                  />
-                </div>
-
-                <button 
-                  type="submit"
-                  className="w-full py-4 bg-gradient-to-r from-red-600 to-orange-400 rounded-xl font-bold flex items-center justify-center gap-2 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-red-600/20"
-                >
-                  <Send size={18} /> Send Message
-                </button>
-              </form>
-            </div>
-          </motion.div>
-        </div>
+            {status === "success" && (
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex items-center justify-center gap-2 text-green-600 font-medium bg-green-50 py-3 rounded-lg border border-green-100">
+                <CheckCircle2 size={18} /> Message Sent Successfully!
+              </motion.div>
+            )}
+          </form>
+        </motion.div>
       </div>
 
-      {/* Footer Sectie */}
-      <footer className="mt-32 pt-16 border-t border-white/5 bg-[#050505]">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 pb-16">
-          
-          {/* Brand/Bio */}
-          <div className="space-y-4">
-            <h4 className="text-2xl font-bold bg-gradient-to-r from-red-600 to-orange-400 bg-clip-text text-transparent">
-              Bjorn
-            </h4>
-            <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-              Creative Developer & Designer passionate about building exceptional digital experiences and modern web applications.
-            </p>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Quick Links</h4>
-            <ul className="text-gray-400 space-y-3 text-sm">
-              {['Home', 'About Me', 'Experience', 'Projects', 'Contact'].map((link) => (
-                <li key={link}>
-                  <a href={`#${link}`} className="hover:text-red-500 transition-colors inline-block">{link}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Social Connect */}
-          <div>
-            <h4 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Connect</h4>
-            <div className="flex gap-3">
-              {[
-                { icon: <Github size={20} />, url: 'https://github.com' },
-                { icon: <Linkedin size={20} />, url: 'https://linkedin.com' },
-                { icon: <Mail size={20} />, url: 'mailto:hello@bjorn.com' }
-              ].map((social, i) => (
-                <a 
-                  key={i}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-red-600 hover:border-red-600 hover:text-white transition-all text-gray-400"
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
-          </div>
+{/* FOOTER MET DOWNLOAD KNOP */}
+      <footer className="w-full mt-16 border-t border-gray-200 pt-8 text-center text-gray-500 text-sm">
+        <div className="flex flex-col items-center gap-3 mb-6">
+          <p className="font-medium text-gray-400 italic text-xs">Want to see my full professional history?</p>
+          <a 
+            href="./src/assets/cv/CV - Bjorn Jongenelen.pdf" 
+            download="CV_Bjorn_Jongenelen.pdf"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-200 hover:border-orange-500 hover:text-orange-500 rounded-full transition-all duration-300 font-bold text-gray-700 shadow-sm hover:shadow-md active:scale-95 text-xs"
+          >
+            <Download size={16} />
+            Download Resume
+          </a>
         </div>
-
-        {/* Copyright Bar */}
-        <div className="text-center py-8 border-t border-white/5 text-gray-500 text-[10px] uppercase tracking-[0.2em]">
-          © {currentYear} Bjorn Jongenelen. Made with <span className="text-red-600 mx-1">❤️</span> in Belgium
+        
+        <div className="pb-8">
+          <p>© {currentYear} Bjorn Jongenelen.</p>
+          <p className="text-[10px] uppercase tracking-widest font-bold text-gray-600 mt-1">
+            Built with ❤️ and a lot of ☕
+          </p>
         </div>
       </footer>
     </section>
