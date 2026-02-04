@@ -32,7 +32,7 @@ export default function Projects() {
         "Firebase",
         "PostgreSQL",
       ],
-      imageUrl: "images/Court One.png",
+      imageUrl: "images/CourtOne.png",
     },
   ];
 
