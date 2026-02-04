@@ -8,7 +8,7 @@ export default function Projects() {
       projectInfo:
         "Dashboard voor het beheren van gebruikers, rollen en rechten met focus op security en schaalbaarheid.",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js"],
-      imageUrl: "./src/assets/images/Bugger.png",
+      imageUrl: "images/Bugger.png",
     },
 
     {
@@ -17,7 +17,7 @@ export default function Projects() {
       projectInfo:
         "A simple, professional website that informs potential customers about services, provides contact options, and builds trust through a portfolio of projects.",
       technologies: ["React", "Motion", "Tailwind CSS", "Firebase"],
-      imageUrl: "./src/assets/images/Power solutions.png",
+      imageUrl: "images/Power solutions.png",
     },
 
     {
@@ -32,7 +32,7 @@ export default function Projects() {
         "Firebase",
         "PostgreSQL",
       ],
-      imageUrl: "./src/assets/images/Court One.png",
+      imageUrl: "images/Court One.png",
     },
   ];
 

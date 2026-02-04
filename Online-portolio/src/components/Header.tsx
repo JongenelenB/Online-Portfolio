@@ -61,7 +61,7 @@ export default function Header() {
                 >
                   <img
                     className="w-10 h-10 hover:scale-110 transition"
-                    src={`./src/assets/icons/${social.name}.svg`}
+                    src={`icons/${social.name}.svg`}
                     alt={social.name}
                   />
                 </a>
@@ -74,7 +74,7 @@ export default function Header() {
             <div className="rounded-full p-1 bg-gradient-to-r from-red-600 to-orange-400">
               <img
                 className="rounded-full w-80 h-80 object-cover border-4 border-white"
-                src="./src/assets/images/profile.png"
+                src="images/profile.png"
                 alt="Profile"
               />
             </div>

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 export default function AboutMe() {
-  const silhouette = "./src/assets/images/silhoutte.png";
+  const silhouette = "images/silhoutte.png";
 
   return (
     <section className="w-full min-h-screen bg-[#f9fafb] relative flex items-center justify-center">
