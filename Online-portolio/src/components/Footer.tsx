@@ -59,7 +59,7 @@ export default function Contact() {
 
           <div className="mt-12 space-y-6">
             {[
-              { icon: <Mail className="text-orange-500" />, title: "Email", value: "Jongenelen.Bjorn@gmail.com", link: "mailto:Jongenelen.Bjorn@gmail.com" },
+              { icon: <Mail className="text-orange-500" />, title: "Email", value: "jongenelen.bjorn@gmail.com", link: "mailto:jongenelen.bjorn@gmail.com" },
               { icon: <Phone className="text-orange-500" />, title: "Phone", value: "+32 485 50 12 97", link: "tel:+32485501297" },
               { icon: <MapPin className="text-orange-500" />, title: "Location", value: "Antwerp, Belgium", link: "#" }
             ].map((item, index) => (
