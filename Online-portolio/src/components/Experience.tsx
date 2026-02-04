@@ -48,21 +48,25 @@ export default function Experience() {
         },
     ]
 
-    return (
-        <div className="w-full flex justify-center overflow-x-hidden pb-5">
-            {/* 
-        Scrollable timeline container
-        max-w-6xl -> wider container
-        px-12 -> horizontal padding so circles don't touch the edge
-        mt-8 -> margin-top to give room from top
-        h-[650px] -> fixed height, vertical scroll if content exceeds
-        overflow-y-auto -> allows vertical scroll
-      */}
-            <div className="w-full max-w-6xl h-[650px] overflow-y-auto mt-8 px-12">
-                <Timeline events={events} />
-            </div>
+return (
+    // Verander 'flex' naar 'flex-col' en 'items-center' om alles verticaal te stapelen
+    <div className="w-full flex flex-col items-center overflow-x-hidden pb-10">
+        
+        {/* Titel Container: Deze heeft dezelfde max-width als je tijdlijn */}
+        <div className="w-full max-w-6xl px-12 mt-10">
+            <h2 className="text-4xl md:text-5xl bg-bla font-bold"> My 
+               <span className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-600 to-orange-400 bg-clip-text text-transparent"> Experience</span>
+            </h2>
+            {/* Subtiel lijntje onder de titel om het af te maken (optioneel) */}
+            <div className="h-1 w-20 bg-gradient-to-r from-red-600 to-orange-400 rounded-full mt-2" />
         </div>
-    )
+
+        {/* Tijdlijn Container: Deze blijft precies zoals hij was */}
+        <div className="w-full max-w-6xl h-[650px] overflow-y-auto mt-8 px-12 scrollbar-hide">
+            <Timeline events={events} />
+        </div>
+    </div>
+)
 }
 
 // --------------------
