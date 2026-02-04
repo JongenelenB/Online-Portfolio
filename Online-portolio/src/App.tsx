@@ -4,7 +4,7 @@ import Header from './components/Header'
 import Experience from './components/Experience'
 import AboutMe from './components/AboutMe'
 import Projects from './components/Projects'
-import LogoCarousel from './components/logoCarousel'
+import LogoCarousel from './components/LogoCarousel'
 
 function App() {
 
