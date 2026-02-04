@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "homepage": "https://jongenelenb.github.io/Online-Portfolio/",
+  "homepage": "https://jongenelenb.github.io/Online-Portfolio/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
