@@ -2,7 +2,7 @@ import AnimateBackground from "./AnimateBackground";
 
 export default function Header() {
   const socials = [
-    { name: "Github", link: "https://github.com/repos" },
+    { name: "Github", link: "https://github.com/JongenelenB?tab=repositories" },
     { name: "Mail", link: "mailto:Jongenelen.Bjorn@gmail.com" },
     {
       name: "LinkedIn",

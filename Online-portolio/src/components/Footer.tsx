@@ -116,7 +116,7 @@ export default function Contact() {
 
           <div className="mt-12 flex justify-center lg:justify-start gap-6">
             <a
-              href="https://github.com/bjornjongenelen"
+              href="https://github.com/JongenelenB?tab=repositories"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-white rounded-full shadow-md hover:scale-110 hover:shadow-lg transition-all text-gray-700 hover:text-orange-500"
