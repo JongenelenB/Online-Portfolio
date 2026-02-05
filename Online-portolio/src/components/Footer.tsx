@@ -124,7 +124,7 @@ export default function Contact() {
               <Github size={24} />
             </a>
             <a
-              href="https://www.linkedin.com/in/bjorn-jongenelen-02a4961b2/"
+              href="https://linkedin.com/in/bjornjongenelen"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-white rounded-full shadow-md hover:scale-110 hover:shadow-lg transition-all text-gray-700 hover:text-orange-500"
